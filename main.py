@@ -1,5 +1,7 @@
+from src.test_response import loader
+
 def main():
-    pass
+    loader()
 
 if __name__ == "__main__":
     main()
