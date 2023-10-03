@@ -1,8 +1,8 @@
 import requests
-import json
+import os
 
-def loader():
-    api_key = '_'
+def tourism_loader():
+    api_key = os.getenv("TOURISM_API_KEY")
 
     url = "https://opendata.myswitzerland.io/v1/destinations"
 

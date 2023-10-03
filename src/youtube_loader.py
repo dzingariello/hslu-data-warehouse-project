@@ -1,7 +1,7 @@
 import requests
 import os
 
-def loader():
+def youtube_loader():
     scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
