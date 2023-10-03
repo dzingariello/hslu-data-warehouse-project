@@ -2,7 +2,7 @@ import requests
 import json
 
 def loader():
-    api_key = 'yUhAaONtj43svCcTnqXsLaOPWVS6wn6Z8NVP3Hwf'
+    api_key = '_'
 
     url = "https://opendata.myswitzerland.io/v1/destinations"
 
