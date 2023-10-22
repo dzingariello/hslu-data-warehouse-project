@@ -20,9 +20,11 @@ def tourism_loader():
         # Parse the JSON response
         data = response.json()
         # Get all destination titles from the response data
-        titles = [item["name"] for item in data["data"]]
-        
-        print(titles)
+        destinations = [item["name"] for item in data["data"]]
+        print(type(destinations))
+        print(destinations)
         
     else:
         print("Failed to retrieve data from the API")
+
+    return(destinations)
