@@ -2,24 +2,24 @@ import requests
 import os
 
 def youtube_loader():
-    scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+    api_key = os.getenv("YOUTUBE_API_KEY")
 
-    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+    # This is the Channel ID for the @MySwitzerland Account
+    channel_id = 'UCggBc5kNSAH4kFKkrYBzddQ'
 
-    api_service_name = "youtube"
-    api_version = "v3"
-    client_secrets_file = "YOUR_CLIENT_SECRET_FILE.json"
+    # Make a request to the YouTube Data API to fetch video details
+    url = f'https://www.googleapis.com/youtube/v3/search?key={api_key}&channelId={channel_id}&part=snippet&order=date&maxResults=100'
 
-    # Get credentials and create an API client
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-        client_secrets_file, scopes)
-    credentials = flow.run_console()
-    youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, credentials=credentials)
+    response = requests.get(url)
 
-    request = youtube.videos().list(
-        
-    )
-    response = request.execute()
-
-    print(response)
+   
+    if response.status_code == 200:
+        data = response.json()
+        # Extract video names from the response
+        video_names = [item['snippet']['title'] for item in data['items']]
+        # Print the video names
+        for name in video_names:
+            print(name)
+    else:
+        print(f"API request failed with status code: {response.status_code}")
+        print(response.text)
