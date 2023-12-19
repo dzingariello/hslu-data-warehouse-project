@@ -8,12 +8,12 @@ def load_env():
 
 def main():
     load_env()
-    # destinations = tourism_loader()
+    destinations = tourism_loader()
     # print("==========================")
     # print(destinations)
-    # db_connect(destinations)
+    db_connect(destinations)
 
-    youtube_loader()
+    #youtube_loader()
 
 if __name__ == "__main__":
     main()
